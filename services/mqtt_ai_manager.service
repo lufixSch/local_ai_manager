@@ -1,0 +1,14 @@
+[Unit]
+Description=MQTT manager for local AI Services like Oobabooga's text-generation-webui
+After=network.target
+
+[Service]
+Type=simple
+User=<user>
+EnvironmentFile=/etc/local_ai_manager/mqtt_manager.conf
+ExecStart=/usr/bin/python3 path/to/mqtt_manager.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

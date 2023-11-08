@@ -1,0 +1,14 @@
+[Unit]
+Description=Oobabooga WebUI service
+After=network.target
+
+[Service]
+Type=simple
+User=<user>
+WorkingDirectory=path/to/oobabooga/webui
+ExecStart=/bin/sh path/to/oobabooga/webui/webui.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

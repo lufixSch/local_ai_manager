@@ -1,0 +1,14 @@
+[Unit]
+Description=Automatic1111 WebUI service
+After=network.target
+
+[Service]
+Type=simple
+User=<user>
+WorkingDirectory=path/to/automatic1111/webui
+ExecStart=source path/to/python/venv/bin/activate && /bin/sh path/to/automatic1111/webui/webui.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
