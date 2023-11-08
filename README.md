@@ -19,9 +19,9 @@ The manager is tested using `venv`. It might work with other virtual environment
 
 ### oobabooga/text-generation-webui
 
-When using the text-generation-webui, the manager assumes there is an executable `webui.sh` located in the folder defined as `OOBABOOGA_LOCATION` which starts the WebUI
+When using the text-generation-webui, the manager assumes there is an executable `webui.sh` located in the folder defined as `OOBABOOGA_LOCATION` which starts the WebUI.
 
-The easiest way to get started is by just adding the line `python server.py` to your `webui.sh`. Optional you cann pass through the arguments given to `webui.sh` which is usefull as the manager passes the `--listen` flag to `webui.sh`
+The easiest way to get started is by just adding the line `python server.py` to your `webui.sh`. Optional you cann pass through the arguments given to `webui.sh` which is usefull as the manager passes the `--listen` flag to `webui.sh`.
 
 ```bash
 python server.py $@
@@ -54,7 +54,7 @@ systemctl start *_ai_manager
 systemctl enable *_ai_manager
 ```
 
-Check the status of your service with `systemctl status *_ai_manager`
+Check the status of your service with `systemctl status *_ai_manager`.
 
 ## Standalone systemd services
 
