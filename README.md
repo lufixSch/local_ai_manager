@@ -6,8 +6,31 @@ Allows you to run/monitor local AI tools like oobabooga/text-generation-webui wi
 - [oobabooga/text-generation-webui](https://github.com/oobabooga/text-generation-webui)
 - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 
+> **WARNING:** In both cases the manager will start the WebUI with the `--listen` flag which means the tool will be accessible by other devices in your network.
+
 **Supported Manager**
 - MQTT
+
+## Setup
+
+### Virtual Environment
+
+The manager is tested using `venv`. It might work with other virtual environments if they provide a file `bin/activate` which can be sourced to activate the virtual environment.
+
+### oobabooga/text-generation-webui
+
+When using the text-generation-webui, the manager assumes there is an executable `webui.sh` located in the folder defined as `OOBABOOGA_LOCATION` which starts the WebUI
+
+The easiest way to get started is by just adding the line `python server.py` to your `webui.sh`. Optional you cann pass through the arguments given to `webui.sh` which is usefull as the manager passes the `--listen` flag to `webui.sh`
+
+```bash
+python server.py $@
+```
+
+### Requirements
+
+*MQTT Manager:*
+- paho-mqtt
 
 ## Usage
 
