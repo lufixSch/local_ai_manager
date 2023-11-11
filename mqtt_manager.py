@@ -27,7 +27,7 @@ def publish_state(
         state[tool] = new_state
 
     print(f"Publishing state: {tool} - {state[tool]}")
-    client.publish(pub_topics[f"{tool}_state"], state[tool], retain=True)
+    client.publish(pub_topics["state"], json.dumps(state), retain=True)
 
 
 # async def health_loop(timeout: float = 5 * 60):
@@ -145,6 +145,7 @@ if __name__ == "__main__":
         "automatic1111": f"{args.topic}/automatic1111",
     }
     pub_topics = {
+        "state": f"{args.topic}/state",
         "oobabooga_state": f"{args.topic}/oobabooga/state",
         "automatic1111_state": f"{args.topic}/automatic1111/state",
     }
@@ -162,16 +163,7 @@ if __name__ == "__main__":
     client.on_message = on_message
     client.on_connect = on_connect
     client.on_disconnect = lambda _, __, ___: print("MQTT Broker disconnected")
-    client.will_set(
-        pub_topics["oobabooga_state"],
-        "stopped",
-        retain=True,
-    )
-    client.will_set(
-        pub_topics["automatic1111_state"],
-        "stopped",
-        retain=True,
-    )
+    client.will_set(pub_topics["state"], json.dumps(state), retain=True)
     client.connect(args.address, args.port)
     client.loop_start()
 
